@@ -3,7 +3,7 @@
 This project implements a 3D U-Net using MONAI to segment brain tumors from MRI volumes in the BraTS dataset. The model identifies tumor subregions (enhancing tumor, tumor core, edema) across multiple MRI modalities (T1, T1Gd, T2, FLAIR).
 
 ## 🧠 Dataset
-- **Source:** BraTS 2020 via MONAI `DecathlonDataset` (`Task01_BrainTumour`)
+- **Source:** BraTS GLI dataset from [Synapse Challenge Page](https://www.synapse.org/Synapse:syn53708249/wiki/627759)
 - **Input:** 4-channel 3D MRI volumes per patient
 - **Labels:** 3-class segmentation mask
 
@@ -11,7 +11,6 @@ This project implements a 3D U-Net using MONAI to segment brain tumors from MRI 
 - [MONAI](https://monai.io/) for medical imaging workflows
 - PyTorch for model training
 - NiBabel for NIfTI handling
-- Optional: Google Colab / Kaggle GPU
 
 ## 🔄 Preprocessing
 - Convert all volumes to channel-first format
@@ -46,17 +45,14 @@ This project implements a 3D U-Net using MONAI to segment brain tumors from MRI 
 ```bash
 pip install -r requirements.txt
 
-# Download dataset via MONAI
-python scripts/download_brats.py
+# Download dataset via provided link
 
-# Train
-python src/train.py
-
-# Validate
-python src/evaluate.py
+#Set path to data and training params in main.py, set UNet params in modules.py
+# Training and validation
+python src/main.py
 ```
 
 ## 💡 Notes
-- Trained on Google Colab (T4, 16 GB) in ~8 hours
+- Trained on RTX 3070 laptop GPU in 10 hours for 50 epochs
 - Optimization tricks: ROI cropping, AMP, caching
 - Can run with fewer samples or patch-based training on low-end GPUs
