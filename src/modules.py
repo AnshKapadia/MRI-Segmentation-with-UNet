@@ -1,7 +1,16 @@
 from monai.transforms import MapTransform
 import torch
 import numpy as np
+import nibabel as nib
 from monai.networks.nets import UNet
+
+def save_nifti(pred_tensor, reference_nifti_path, output_path):
+    reference = nib.load(reference_nifti_path)
+    affine = reference.affine
+    pred_np = pred_tensor.cpu().numpy().astype(np.uint8)
+    pred_img = nib.Nifti1Image(pred_np, affine)
+    nib.save(pred_img, output_path)
+    
 class PadToMultipleOf(MapTransform):
     """
     Pad image and label spatially to the next multiple of `k`.

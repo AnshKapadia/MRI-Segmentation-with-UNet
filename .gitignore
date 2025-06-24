@@ -1,0 +1,10 @@
+# Other files
+checkpoints/*
+data/training_*
+data/validation_*
+src/__pycache__/
+src/*.bat
+results
+src/inference_*/
+src/val.py
+src/test.ipynb
