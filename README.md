@@ -48,9 +48,23 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 - Supports full-volume inference with sliding window
 - Visualizes output masks overlaid on MRI slices
 
+<p align="center">
+  <b>Left:</b> Ground Truth &nbsp;&nbsp;&nbsp; <b>Right:</b> Prediction
+</p>
+
 <p float="left">
   <img src="sample_output/BraTS-GLI-02536-101_gt.png" width="45%" />
   <img src="sample_output/BraTS-GLI-02536-101_pred.png" width="45%" />
+</p>
+
+<p float="left">
+  <img src="sample_output/BraTS-GLI-02505-101_gt.png" width="45%" />
+  <img src="sample_output/BraTS-GLI-02505-101_pred.png" width="45%" />
+</p>
+
+<p float="left">
+  <img src="sample_output/BraTS-GLI-02615-100_gt.png" width="45%" />
+  <img src="sample_output/BraTS-GLI-02615-100_pred.png" width="45%" />
 </p>
 
 ---
