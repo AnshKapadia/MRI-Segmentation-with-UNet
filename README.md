@@ -49,7 +49,7 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 - Visualizes output masks overlaid on MRI slices
 
 <p align="center">
-  <b>Left:</b> Ground Truth &nbsp;&nbsp;&nbsp; <b>Right:</b> Prediction
+  <b>Left:</b> Ground Truth &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Right:</b> Prediction
 </p>
 
 <p float="left">
