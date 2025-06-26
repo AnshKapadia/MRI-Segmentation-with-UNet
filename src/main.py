@@ -23,7 +23,7 @@ if __name__ == '__main__':
 	parser.add_argument('--save_path',  type=str,    default=os.path.join(os.path.dirname(os.getcwd()), "checkpoints"), help='The path where model checkpoints to be saved')
 
 	### Others
-	parser.add_argument('--train', type=bool, default=True, help='Do training')
+	parser.add_argument('--train', type=bool, default=False, help='Do training')
 	parser.add_argument('--eval', type=bool, default=False, help='Do evaluation')
 
 	## Init folders, trainer and loader

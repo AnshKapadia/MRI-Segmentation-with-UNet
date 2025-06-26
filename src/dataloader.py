@@ -56,22 +56,24 @@ def get_val_loader(val_dir, num_workers=2):
             "t1ce": glob.glob(os.path.join(case, "*t1c.nii.gz")),
             "t2": glob.glob(os.path.join(case, "*t2w.nii.gz")),
             "flair": glob.glob(os.path.join(case, "*t2f.nii.gz")),
+            "label": glob.glob(os.path.join(case, "*seg.nii.gz"))
         }
 
         if all(len(v) == 1 for v in files.values()):
             data_dicts.append({
                 "image": [files["t1"][0], files["t1ce"][0], files["t2"][0], files["flair"][0]],
+                "label": files["label"][0]
             })
 
     val_transforms = Compose([
-        LoadImaged(keys=["image"]),
-        EnsureChannelFirstd(keys=["image"]),
-        Spacingd(keys=["image"], pixdim=(1.0, 1.0, 1.0), mode="bilinear"),
-        Orientationd(keys=["image"], axcodes="RAS"),
+        LoadImaged(keys=["image", "label"]),
+        EnsureChannelFirstd(keys=["image", "label"]),
+        Spacingd(keys=["image", "label"], pixdim=(1.0, 1.0, 1.0), mode="bilinear"),
+        Orientationd(keys=["image", "label"], axcodes="RAS"),
         ScaleIntensityRanged(keys=["image"], a_min=0, a_max=300, b_min=0.0, b_max=1.0, clip=True),
-        CropForegroundd(keys=["image"], source_key="image"),
-        PadToMultipleOf(keys=["image"], k=8),
-        ToTensord(keys=["image"])
+        CropForegroundd(keys=["image", "label"], source_key="image"),
+        PadToMultipleOf(keys=["image", "label"], k=8),
+        ToTensord(keys=["image", "label"])
     ])
 
     val_ds = Dataset(data=data_dicts, transform=val_transforms)

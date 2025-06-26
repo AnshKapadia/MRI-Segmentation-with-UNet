@@ -3,14 +3,10 @@ import torch
 import numpy as np
 import nibabel as nib
 from monai.networks.nets import UNet
+import matplotlib.pyplot as plt
+from monai.transforms import (
+    LoadImaged, EnsureChannelFirstd, Compose, Spacingd, Orientationd)
 
-def save_nifti(pred_tensor, reference_nifti_path, output_path):
-    reference = nib.load(reference_nifti_path)
-    affine = reference.affine
-    pred_np = pred_tensor.cpu().numpy().astype(np.uint8)
-    pred_img = nib.Nifti1Image(pred_np, affine)
-    nib.save(pred_img, output_path)
-    
 class PadToMultipleOf(MapTransform):
     """
     Pad image and label spatially to the next multiple of `k`.
@@ -35,6 +31,31 @@ class PadToMultipleOf(MapTransform):
                 img, pad_sizes, mode=self.mode
             )
         return data
+
+t1ce_vis_transform = Compose([
+    LoadImaged(keys=["t1c"]),
+    EnsureChannelFirstd(keys=["t1c"]),
+    Spacingd(keys=["t1c"],pixdim=(1.0, 1.0, 1.0), mode="bilinear"),
+    Orientationd(keys=["t1c"],axcodes="RAS"),
+    PadToMultipleOf(keys=["t1c"],k=8)
+])
+def overlay_segmentation(t1c, seg, slice_index, title, save_path):
+    plt.figure(figsize=(6, 6))
+    plt.imshow(t1c[:, :, slice_index], cmap='gray')
+    plt.imshow(np.ma.masked_where(seg[:, :, slice_index] == 0, seg[:, :, slice_index]), cmap='jet', alpha=0.5)
+    plt.axis('off')
+    plt.title(title)
+    plt.savefig(save_path, bbox_inches='tight')
+    plt.close()
+
+def save_nifti(pred_tensor, reference_nifti_path, output_path):
+    reference = nib.load(reference_nifti_path)
+    affine = reference.affine
+    pred_np = pred_tensor.cpu().numpy().astype(np.uint8)
+    pred_img = nib.Nifti1Image(pred_np, affine)
+    nib.save(pred_img, output_path)
+    
+
     
 def get_unet_model():
     return UNet(
