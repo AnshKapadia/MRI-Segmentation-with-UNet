@@ -27,7 +27,7 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 - ROI cropping for memory efficiency
 - Caching with `CacheDataset`
 - Light data augmentation (random flips, intensity shifts)
-- Padding for matching U-Net dimensions
+- Padding to match U-Net dimensions
 
 ---
 
@@ -38,7 +38,7 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 - **Batch Size**: 1 (adjustable)
 - **Loss Function**: Dice Loss (+ optional Cross Entropy)
 - **Metric**: Per-class Dice Score
-- **Training Time**: ~10 hours on RTX 3070 (50 epochs)
+- **Training Time**: ~10 hours on RTX 3070 (100 epochs)
 
 ---
 
