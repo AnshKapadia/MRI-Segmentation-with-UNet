@@ -50,7 +50,7 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 
 <p float="left">
   <img src="sample_output/BraTS-GLI-02536-101_gt.png" width="45%" />
-  <img src="results/BraTS-GLI-02536-101_pred.png" width="45%" />
+  <img src="sample_output/BraTS-GLI-02536-101_pred.png" width="45%" />
 </p>
 
 ---
