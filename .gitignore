@@ -2,9 +2,13 @@
 checkpoints/*
 data/training_*
 data/validation_*
+data/test_*
+output_images/*
 src/__pycache__/
 src/*.bat
 results
 src/inference_*/
 src/val.py
 src/test.ipynb
+src/*.png
+src/visualise.py
