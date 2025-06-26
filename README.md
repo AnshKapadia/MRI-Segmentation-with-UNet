@@ -27,6 +27,7 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 - ROI cropping for memory efficiency
 - Caching with `CacheDataset`
 - Light data augmentation (random flips, intensity shifts)
+- Padding for matching U-Net dimensions
 
 ---
 
@@ -57,7 +58,20 @@ project_root/
 ├── src/              # Training and evaluation scripts
 ├── checkpoints/      # Saved model weights
 ├── results/          # Inference outputs and visualizations
+├── output_images/    # PNG slice visualizations
 └── README.md         # Project overview
+```
+
+---
+
+## 📁 Prepare Folders
+
+Before running, create necessary output folders:
+
+```bash
+mkdir results
+mkdir checkpoints
+mkdir output_images
 ```
 
 ---
@@ -70,12 +84,13 @@ pip install -r requirements.txt
 ```
 
 1. Download the BraTS dataset from the provided Synapse link.
-2. Set paths and training parameters in `init.sh`.
+2. Set paths and training parameters in `run_train.sh` and `run_eval.sh`.
 3. Configure U-Net hyperparameters in `modules.py`.
 
 ### Training & Evaluation
 ```bash
-sh init.sh
+sh run_train.sh
+sh run_eval.sh
 ```
 
 ---
