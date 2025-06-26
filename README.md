@@ -48,25 +48,25 @@ This project implements a 3D U-Net using the MONAI framework to segment brain tu
 - Supports full-volume inference with sliding window
 - Visualizes output masks overlaid on MRI slices
 
-<div style="display: flex; justify-content: center; gap: 5%; margin-bottom: 10px;">
-  <div style="width: 35%; text-align: center;"><b>Ground Truth</b></div>
-  <div style="width: 35%; text-align: center;"><b>Prediction</b></div>
-</div>
+<table>
+  <tr>
+    <th style="text-align: center;">Ground Truth</th>
+    <th style="text-align: center;">Prediction</th>
+  </tr>
+  <tr>
+    <td><img src="sample_output/BraTS-GLI-02536-101_gt.png" width="300px" /></td>
+    <td><img src="sample_output/BraTS-GLI-02536-101_pred.png" width="300px" /></td>
+  </tr>
+  <tr>
+    <td><img src="sample_output/BraTS-GLI-02505-101_gt.png" width="300px" /></td>
+    <td><img src="sample_output/BraTS-GLI-02505-101_pred.png" width="300px" /></td>
+  </tr>
+  <tr>
+    <td><img src="sample_output/BraTS-GLI-02615-100_gt.png" width="300px" /></td>
+    <td><img src="sample_output/BraTS-GLI-02615-100_pred.png" width="300px" /></td>
+  </tr>
+</table>
 
-<p float="left">
-  <img src="sample_output/BraTS-GLI-02536-101_gt.png" width="35%" />
-  <img src="sample_output/BraTS-GLI-02536-101_pred.png" width="35%" />
-</p>
-
-<p float="left">
-  <img src="sample_output/BraTS-GLI-02505-101_gt.png" width="35%" />
-  <img src="sample_output/BraTS-GLI-02505-101_pred.png" width="35%" />
-</p>
-
-<p float="left">
-  <img src="sample_output/BraTS-GLI-02615-100_gt.png" width="35%" />
-  <img src="sample_output/BraTS-GLI-02615-100_pred.png" width="35%" />
-</p>
 
 
 ---
